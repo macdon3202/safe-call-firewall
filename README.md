@@ -11,6 +11,8 @@ Active StudioNet V2.2 deployment: [`0x32dA611016AFA6F256fE9F158E3383AF4EfB6716`]
 The repository release is `SAFE_CALL_FIREWALL_V2_2`. Verify this exact value via
 public `get_config()` before running live evidence.
 
+Live frontend: [safe-call-firewall.pages.dev](https://safe-call-firewall.pages.dev/).
+
 The production frontend is pinned to this exact V2.2 address and rejects a
 contract-version mismatch before submitting a write.
 
@@ -55,5 +57,6 @@ record only finalized successful transactions plus contract readback in
 [the evidence ledger](docs/LIVE_EVIDENCE.md). Any reviewer can repeat the same write
 with their own wallet and a distinct supported Safe transaction hash.
 
-Deployment and live evidence are intentionally left pending until the exact
-reviewed source is deployed and verified on StudioNet.
+The reviewed V2.2 source is deployed on StudioNet. Finalized happy-path,
+blocked, unresolved, validation-failure, replay-rollback, and conflict history
+are linked from [the end-to-end audit](docs/E2E_AUDIT.md).
