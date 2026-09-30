@@ -1,0 +1,113 @@
+{
+  "contract": "0x32dA611016AFA6F256fE9F158E3383AF4EfB6716",
+  "contract_url": "https://explorer-studio.genlayer.com/address/0x32dA611016AFA6F256fE9F158E3383AF4EfB6716",
+  "cases": [
+    {
+      "name": "UNSUPPORTED_CHAIN",
+      "wallet": "0xFeD97e2aE1A8C1983b7cA206B3545e6A2c685E43",
+      "args": [
+        "POLYGON",
+        "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "ROUTINE_OPERATIONS"
+      ],
+      "transaction": {
+        "hash": "0x72bfa4392992730f095e5f48b8f38d2f17924cdbec1178ce9ba7d4d96db16d42",
+        "url": "https://explorer-studio.genlayer.com/tx/0x72bfa4392992730f095e5f48b8f38d2f17924cdbec1178ce9ba7d4d96db16d42",
+        "status": "FINALIZED",
+        "consensus": "MAJORITY_AGREE",
+        "execution": "ERROR",
+        "result_name": "MAJORITY_AGREE"
+      },
+      "pre_post_equal": true
+    },
+    {
+      "name": "MALFORMED_HASH",
+      "wallet": "0xc67532aeF9D2879cBA9375a02E6217A3524657B8",
+      "args": [
+        "SEPOLIA",
+        "0x1234",
+        "ROUTINE_OPERATIONS"
+      ],
+      "transaction": {
+        "hash": "0xe283a7d35115eb4a6969cf3ad8e5a34b6f9ec9821746771819893d2ceaa3de4b",
+        "url": "https://explorer-studio.genlayer.com/tx/0xe283a7d35115eb4a6969cf3ad8e5a34b6f9ec9821746771819893d2ceaa3de4b",
+        "status": "FINALIZED",
+        "consensus": "MAJORITY_AGREE",
+        "execution": "ERROR",
+        "result_name": "MAJORITY_AGREE"
+      },
+      "pre_post_equal": true
+    },
+    {
+      "name": "UNKNOWN_POLICY",
+      "wallet": "0xFeD97e2aE1A8C1983b7cA206B3545e6A2c685E43",
+      "args": [
+        "SEPOLIA",
+        "0x2222222222222222222222222222222222222222222222222222222222222222",
+        "CUSTOM_POLICY"
+      ],
+      "transaction": {
+        "hash": "0xb43f82de62387b597107993990e611543133cd393b732940a6979d6d2b326bf5",
+        "url": "https://explorer-studio.genlayer.com/tx/0xb43f82de62387b597107993990e611543133cd393b732940a6979d6d2b326bf5",
+        "status": "FINALIZED",
+        "consensus": "MAJORITY_AGREE",
+        "execution": "ERROR",
+        "result_name": "MAJORITY_AGREE"
+      },
+      "pre_post_equal": true
+    },
+    {
+      "name": "SOURCE_NOT_FOUND",
+      "wallet": "0xc67532aeF9D2879cBA9375a02E6217A3524657B8",
+      "args": [
+        "SEPOLIA",
+        "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "ROUTINE_OPERATIONS"
+      ],
+      "transaction": {
+        "hash": "0xff64acd1b68a3ca966080dcfe785aeecb5132786b62274ae08a0529df9ae6e16",
+        "url": "https://explorer-studio.genlayer.com/tx/0xff64acd1b68a3ca966080dcfe785aeecb5132786b62274ae08a0529df9ae6e16",
+        "status": "FINALIZED",
+        "consensus": "MAJORITY_AGREE",
+        "execution": "SUCCESS",
+        "result_name": "MAJORITY_AGREE"
+      },
+      "assessment": {
+        "blocked_call_count": 0,
+        "call_count": 0,
+        "call_graph_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "calls_json": "[]",
+        "category": "UNKNOWN",
+        "certificate_digest": "4f9dcf8af959528c99dc426a19146f0d59b2324c90cbf4e47b51785912c0e7b0",
+        "chain_key": "SEPOLIA",
+        "confirmations_required": 0,
+        "decoded_digest": "",
+        "envelope_digest": "",
+        "id": 3,
+        "is_executed": false,
+        "nonce": "",
+        "operation": 0,
+        "policy_digest": "af7a749793ea85916245532f99a47c677709d34fcc71626754024e3cd0cd88ed",
+        "policy_id": "ROUTINE_OPERATIONS",
+        "reason": "SOURCE_NOT_VERIFIED",
+        "requester": "0xc67532aeF9D2879cBA9375a02E6217A3524657B8",
+        "review_call_count": 0,
+        "safe_address": "",
+        "safe_tx_hash": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_url_digest": "64793267ac2b7af6aad80c96d093455cbf32ff5fbe6fde2ca30693b06e496857",
+        "state": "UNRESOLVED",
+        "summary": "",
+        "target": "",
+        "unknown_call_count": 0,
+        "value": "0"
+      }
+    }
+  ],
+  "final_config": {
+    "architecture": "ATOMIC_BOUND_SOURCE_CALL_GRAPH_CERTIFICATE",
+    "assessment_count": 3,
+    "chains": "ETHEREUM,SEPOLIA,OPTIMISM,ARBITRUM,BASE",
+    "policies": "STRICT_NO_ADMIN,ROUTINE_OPERATIONS,TREASURY_REVIEW",
+    "version": "SAFE_CALL_FIREWALL_V2_2"
+  }
+}

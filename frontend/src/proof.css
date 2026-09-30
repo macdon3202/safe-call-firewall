@@ -1,0 +1,30 @@
+.certificate-proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.certificate-proof div {
+  min-width: 0;
+  background: #182f49;
+  border: 1px solid #29415b;
+  border-radius: 11px;
+  padding: 11px;
+}
+
+.certificate-proof small,
+.certificate-proof b {
+  display: block;
+}
+
+.certificate-proof b {
+  margin-top: 5px;
+  color: #fff;
+  font: 11px "Space Mono";
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .certificate-proof { grid-template-columns: 1fr; }
+}
