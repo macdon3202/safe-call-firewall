@@ -13,6 +13,9 @@ public `get_config()` before running live evidence.
 
 Live frontend: [safe-call-firewall.pages.dev](https://safe-call-firewall.pages.dev/).
 
+Reviewer update: [`REVIEW_RESPONSE.md`](REVIEW_RESPONSE.md) documents the
+transaction-bound post-write readback fix and concurrent-submission coverage.
+
 The production frontend is pinned to this exact V2.2 address and rejects a
 contract-version mismatch before submitting a write.
 

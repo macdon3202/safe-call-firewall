@@ -18,3 +18,5 @@
 | Duplicate assessment | revert, complete state unchanged |
 | Unsupported chain/policy/hash | revert, counter unchanged |
 | Second unrelated wallet | may analyze distinct transaction |
+| Concurrent submissions A and B | A extracts its own returned ID from A's finalized leader receipt; it never uses the later global counter |
+| Returned certificate locator mismatch | UI fails closed instead of rendering another requester's certificate |

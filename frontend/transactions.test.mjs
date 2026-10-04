@@ -1,4 +1,4 @@
-import test from'node:test';import assert from'node:assert/strict';import{normalizeHash,receiptState}from'./src/transactions.js';
+import test from'node:test';import assert from'node:assert/strict';import{normalizeHash,receiptState,assessmentIdFromReceipt,assertAssessmentBinding}from'./src/transactions.js';
 test('normalizes hash shapes',()=>{const h='0x'+'ab'.repeat(32);assert.equal(normalizeHash({txId:h}),h)});
 test('rejects bad wallet response',()=>assert.throws(()=>normalizeHash({hash:'bad'})));
 test('FINALIZED execution error is failure',()=>assert.equal(receiptState({statusName:'FINALIZED',consensus_data:{leader_receipt:[{mode:'leader',execution_result:'ERROR'}]}}).accepted,false));
@@ -6,3 +6,7 @@ test('majority disagreement is failure',()=>assert.equal(receiptState({statusNam
 test('finalized leader success is accepted',()=>assert.equal(receiptState({statusName:'FINALIZED',result_name:'MAJORITY_AGREE',consensus_data:{leader_receipt:[{mode:'leader',execution_result:'SUCCESS'}]}}).accepted,true));
 test('finalized without an affirmative consensus is failure',()=>assert.equal(receiptState({statusName:'FINALIZED',consensus_data:{leader_receipt:{mode:'leader',execution_result:'SUCCESS'}}}).failed,true));
 test('supports object-shaped leader receipt',()=>assert.equal(receiptState({status_name:'FINALIZED',result_name:'AGREE',consensus_data:{leader_receipt:{mode:'leader',execution_result:'SUCCESS'}}}).accepted,true));
+test('extracts the assessment ID returned by the finalized transaction',()=>assert.equal(assessmentIdFromReceipt({consensus_data:{leader_receipt:[{mode:'leader',result:{payload:{readable:'7'}}}]}}),7));
+test('concurrent submission cannot redirect readback to the global latest ID',()=>{const receiptA={consensus_data:{leader_receipt:[{mode:'leader',result:{payload:{readable:'7'}}}]}};const globalAssessmentCountAfterConcurrentB=8;assert.equal(assessmentIdFromReceipt(receiptA),7);assert.notEqual(assessmentIdFromReceipt(receiptA),globalAssessmentCountAfterConcurrentB)});
+test('exact returned certificate must match requester and submitted locator',()=>{const expected={id:7,requester:'0x'+'ab'.repeat(20),chain:'SEPOLIA',safeTxHash:'0x'+'12'.repeat(32),policy:'ROUTINE_OPERATIONS'};const record={id:7,requester:expected.requester.toUpperCase(),chain_key:expected.chain,safe_tx_hash:expected.safeTxHash,policy_id:expected.policy};assert.equal(assertAssessmentBinding(record,expected),record);assert.throws(()=>assertAssessmentBinding({...record,id:8},expected),/does not match/) });
+test('missing transaction return ID fails closed',()=>assert.throws(()=>assessmentIdFromReceipt({consensus_data:{leader_receipt:[]}}),/valid assessment ID/));
